@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Usage: ./copy-and-delete-log-file
+
+FILE=$1
+
+if [ "$#" -ne 1 ]; then
+    echo "You must enter exactly 1 argument."
+    exit 1
+fi
+
+if [ ! -f "$FILE" ]; then
+    echo "'${FILE}' does not exist."
+    exit 1
+fi
+
+NEW_FILE="${FILE}.old"
+
+echo "Copying contents of '${FILE}' over to '${NEW_FILE}'."
+cp $FILE "${FILE}.old"
+
+echo "Clearing contents of '${FILE}'."
+> $FILE
+
