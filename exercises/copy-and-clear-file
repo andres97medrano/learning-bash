@@ -1,0 +1,25 @@
+#!/bin/bash
+# 
+# Copies the passed in $FILE's contents onto a new file suffixed with '.old'. Clears the original $FILE's contents. 
+# Usage: ./copy-and-clear-file file
+
+FILE=$1
+
+if [ "$#" -ne 1 ]; then
+    echo "You must enter exactly 1 argument."
+    exit 1
+fi
+
+if [ ! -f "$FILE" ]; then
+    echo "'${FILE}' does not exist."
+    exit 1
+fi
+
+FILE_OLD="${FILE}.old"
+
+echo "Copying contents of '${FILE}' over to '${FILE_OLD}'."
+cp $FILE $FILE_OLD
+
+echo "Clearing contents of '${FILE}'."
+cat /dev/null > $FILE
+
