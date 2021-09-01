@@ -20,5 +20,5 @@ echo "Copying contents of '${FILE}' over to '${NEW_FILE}'."
 cp $FILE "${FILE}.old"
 
 echo "Clearing contents of '${FILE}'."
-> $FILE
+cat /dev/null > $FILE
 
