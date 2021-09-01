@@ -1,6 +1,7 @@
 #!/bin/bash
-#
-# Usage: ./copy-and-delete-log-file
+# 
+# Copies the passed in $FILE's contents onto a new file suffixed with '.old'. Clears the original $FILE's contents. 
+# Usage: ./copy-and-clear-file file
 
 FILE=$1
 
