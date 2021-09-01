@@ -15,10 +15,10 @@ if [ ! -f "$FILE" ]; then
     exit 1
 fi
 
-NEW_FILE="${FILE}.old"
+FILE_OLD="${FILE}.old"
 
-echo "Copying contents of '${FILE}' over to '${NEW_FILE}'."
-cp $FILE "${FILE}.old"
+echo "Copying contents of '${FILE}' over to '${FILE_OLD}'."
+cp $FILE $FILE_OLD
 
 echo "Clearing contents of '${FILE}'."
 cat /dev/null > $FILE
