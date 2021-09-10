@@ -4,6 +4,7 @@
 # Usage: ./copy-and-clear-file file
 
 FILE=$1
+FILE_OLD="${FILE}.old"
 
 if [ "$#" -ne 1 ]; then
     echo "You must enter exactly 1 argument."
@@ -15,7 +16,6 @@ if [ ! -f "$FILE" ]; then
     exit 1
 fi
 
-FILE_OLD="${FILE}.old"
 
 echo "Copying contents of '${FILE}' over to '${FILE_OLD}'."
 cp $FILE $FILE_OLD
