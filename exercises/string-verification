@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Show how to verify string parameters.
+
+ARG1=$1
+
+# Check if string is empty
+[[ -z $ARG1 ]] && echo string is empty
+
+# Check if string starts with a lowercase letter
+[[ $ARG1 = [a-z]* ]] || echo string does not start with a lowercase letter

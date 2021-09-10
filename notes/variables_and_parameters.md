@@ -103,12 +103,41 @@ yellow
 
 - Check if a string is empty
 ```bash
-# If $1 string is empty, then exit with status code 1
-test -z $1 && exit 1
+[[ -z $1 ]] && echo "var is empty"
 ```
 
 - Check for specific patterns
 ```bash
+# If string doesn't start with a letter a-z, then echo to the user to let them know
+[[ $1=='[a-z]*' ]] || echo $1 does not start with a letter
+```
 
-[[ $1 == '[a-z]*' ]] || echo $1 does not start with a letter
+### Using Here Documents
+
+- Useful for replacing `echo` for long texts that need to be displayed
+- Use it in a script if a command is called that opens its own prompt (such as an FTP client interface)
+- In a here document, I/O redirection is used to feed a command list into an interactive program (`ftp` or `cat`)
+    - Say you wanna use `ftp` to download some files, but in order to do so, you need to engage in an interactive prompt. Using the `>>` operator, you can feed it a command list, and it'll do whatever actions you want it to
+
+```bash
+# This script will output/redirect all of the text up until it reaches the string 'End-of-message'
+cat <<End-of-message
+-----------
+Line 1
+Line 2
+Line 3
+-----------
+End-of-message
+```
+
+
+```bash
+# Get into the lftp CLI, input the list of commands until we reach the 'EndOfSession` string. This will download the file you want, and then you continue normally in your script.
+lftp localhost >>EndOfSession
+ls
+get hosts
+bye
+EndOfSession
+
+echo The file has been downloaded!
 ```
