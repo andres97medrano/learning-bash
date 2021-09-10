@@ -19,6 +19,6 @@ done
 
 for f in $LIST_OF_FILES; do
     filename=$(basename $f)
-    echo "Copying file '${f}' to '${HOME}' directoy."
-    cp $f "${HOME}/${filename}"
+    echo "Copying file '${f}' to '${HOME}' directory."
+    cp $f $HOME
 done
