@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Copy all files that are passed in as arguments into the user's home directory. 
+# If no files were provided, then prompt user for files.
+
+LIST_OF_FILES=$@
+
+if [[ $# -eq 0 ]]; then
+    echo "Enter file(s) you wish to copy to your home directory (space-separated):"
+    read LIST_OF_FILES
+fi
+
+for f in $LIST_OF_FILES; do
+    if [[ ! -f $f ]]; then
+        echo "File '${f}' does not exist."
+        exit 1
+    fi
+done
+
+for f in $LIST_OF_FILES; do
+    filename=$(basename $f)
+    echo "Copying file '${f}' to '${HOME}' directory."
+    cp $f $HOME
+done

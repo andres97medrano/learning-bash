@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Show how different arguments are handled.
+
+echo "\$* (args in str) -> $*"
+echo "\$# (num of args) -> $#"
+echo "\$@ (list of args) -> $@"
+echo "\$0 (script name) -> $0"
+
+exit 0
+
