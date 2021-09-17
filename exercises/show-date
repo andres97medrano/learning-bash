@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Put the result of `date` cmd in a variable, and use pattern matching to show 3 lines displaying the month, day, and year.
+# Usage: ./show-date
+
+# e.g. 09-17-21
+DATE=$(date +%m-%d-%y)
+
+# Using offset + length operators
+month=${DATE:0:2}
+day=${DATE:3:2}
+year=${DATE:6:2}
+
+# Using pattern matching
+month_pat=${DATE%%-*}		# return what's to the left of the first '-'
+day_year=${DATE#*-}		    # return what's to the right of the first '-'
+day_pat=${day_year%%-*}		# return what's to the left of the first '-'
+year_pat=${day_year##*-}	# return what's to the right of the last '-'
+
+# Just wanted to do some practice with arrays. Use them to compare the substring method
+# with the pattern matching method.
+dates_using_substring=( $month $day $year )
+dates_using_pattern=( $month_pat $day_pat $year_pat )
+
+for i in ${!dates_using_substring[@]}; do
+    sub=${dates_using_substring[$i]}
+    pat=${dates_using_pattern[$i]}
+
+    [[ $sub = $pat ]] || echo "Strings do not match: ${sub} != ${pat}"
+done
+
+echo "The month is ${month}"
+echo "The day is ${day}"
+echo "The year is ${year}"
+
