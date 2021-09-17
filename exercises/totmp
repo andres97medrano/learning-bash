@@ -18,6 +18,8 @@ for f in $LIST_OF_FILES; do
 done
 
 for f in $LIST_OF_FILES; do
+    # basename removes everything up to the last `/` slash character in string;
+    # it strips the filename or directory name
     filename=$(basename $f)
     echo "Copying file '${f}' to '${HOME}' directory."
     cp $f $HOME
