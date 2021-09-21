@@ -1,0 +1,8 @@
+rocky,1,maltipoo
+princess,3,chihuahua
+ace,2,cavapoo
+rex,5,rottweiler
+simba,12,chihuahua mix
+honey,6,pitbull
+motita,12,poodle mix
+luna,2,maltipoo

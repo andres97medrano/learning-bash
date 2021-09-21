@@ -1,0 +1,4 @@
+cn=anne,dc=example,dc=com
+cn=bob,dc=example,dc=com
+cn=lara,dc=example,dc=com
+cn=lisa,dc=example,dc=com

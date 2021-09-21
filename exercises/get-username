@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# Strip username from file.
+# Usage: ./get-username <username> <file>
+
+if [[ $# -ne 2 ]]; then
+    echo "$0: <username> <file>"
+    exit 1
+fi
+
+if [[ ! -f $2 ]]; then
+    echo "$0: $2 does not exist."
+    exit 1
+fi
+
+# Find line containing username ($1) in file ($2) case-insensitive.
+matching_line=$( grep -i $1 $2 )
+
+# Get the first column of the line
+user_column=$( echo $matching_line | cut -f 1 -d , )
+
+# Strip the 'cn=' prefix from line
+user=$( echo ${user_column#cn=} )
+
+# Uppercase the username
+USER=$( echo $user | tr '[:lower:]' '[:upper:]' )
+
+echo "The username is $USER"

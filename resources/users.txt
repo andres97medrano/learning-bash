@@ -1,0 +1,5 @@
+pablo:1
+ricky:2
+nicole:3
+rambo:4
+silverio:5
